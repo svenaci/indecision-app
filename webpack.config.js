@@ -6,9 +6,10 @@ console.log(path.join(__dirname, "public"));
 module.exports = {
   entry: "./src/app.js",
   output: {
-    path: path.join(__dirname, "public"),
+    path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
   },
+  mode: "development",
   module: {
     rules: [
       {
@@ -17,13 +18,23 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
+          },
+        ],
       },
     ],
   },
-  devtool: "cheap-module-eval-source-map",
+  devtool: "eval-cheap-module-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    static: path.resolve(__dirname, "public"),
   },
 };
