@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import IndecisionApp from "./components/Indecesion.js";
-
+import "./styles/styles.css";
 /*
   React components are es6 classes that extends somthing react gives us and has to define render method
   to use these components just need to provide them inside a jsx
