@@ -15,16 +15,6 @@ import IndecisionApp from "./components/Indecesion.js";
 //props are one way stream. can be passed from parents to child
 //to solve this, pass functions in as props
 
-const obj = {
-  name: "vikram",
-  getName() {
-    return this.name;
-  },
-};
-
-//event handler one of the instances when we lose context of 'this'
-const userName = obj.getName.bind(obj);
-
 // ReactDOM.render(<IndecisionApp />, document.getElementById("app"));
 
 const root = createRoot(document.getElementById("app"));

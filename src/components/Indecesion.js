@@ -4,10 +4,12 @@ import AddOption from "./AddOption.js";
 import Options from "./Options.js";
 import Header from "./Header.js";
 import Action from "./Action.js";
+import OptionModal from "./OptionModal.js";
 
 export default class IndecisionApp extends React.Component {
   state = {
     options: [],
+    selectedOption: undefined,
   };
 
   handleDeleteOptions = () => {
@@ -23,9 +25,16 @@ export default class IndecisionApp extends React.Component {
   handlePick = () => {
     const randomElement = Math.floor(Math.random() * this.state.options.length);
     const option = this.state.options[randomElement];
-    alert(option);
+    this.setState(() => ({
+      selectedOption: option,
+    }));
   };
 
+  handleCloseModal = () => {
+    this.setState(() => ({
+      selectedOption: undefined,
+    }));
+  };
   handleAddOption = (option) => {
     //not using push since we dont want to directly manipulate the this.state.object (prevState)
     //concat method is going to allow to merge prevstate array with smt new array without affecting prevState. returns new array
@@ -78,6 +87,10 @@ export default class IndecisionApp extends React.Component {
           handleDeleteOption={this.handleDeleteOptionSingular}
         />
         <AddOption handleAddOption={this.handleAddOption} />
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          handleCloseModal={this.handleCloseModal}
+        />
       </div>
     );
   }
