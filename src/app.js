@@ -1,6 +1,10 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import IndecisionApp from "./components/Indecesion.js";
+
+//use same style for all browsers instead of their default style
+import "normalize.css/normalize.css";
+
 import "./styles/styles.scss";
 /*
   React components are es6 classes that extends somthing react gives us and has to define render method
